@@ -4,9 +4,9 @@ from .models import Book, Author, Librarian, Library
 # Retrieve the librarian for a library.
 author = ["Author.objects.get(name=author_name)"]
 books_by_author= ["objects.filter(author=author)"]
-library = Library.objects.get(name="library_name")
+library = ["Library.objects.get(name="library_name")"]
 books = ["Library.objects.get(name=library_name)", "books.all()"]
-librarian = library.librarian
+librarian = ["Librarian.objects.filter(library=library)"]
 
 
 
