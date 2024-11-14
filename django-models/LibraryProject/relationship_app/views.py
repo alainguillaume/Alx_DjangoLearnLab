@@ -10,4 +10,4 @@ from .models import Book, Library
 def book_list(request):
     books = Book.objects.all()
     context = {'book_list': book_list}
-    return render(request, 'books/book_list.html', context)
+    return render(request, 'relationship_app/list_books.html', context)
