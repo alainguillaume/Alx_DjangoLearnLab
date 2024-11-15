@@ -9,12 +9,12 @@ from .models import Library
 # Create a function-based view in relationship_app/views.py that lists all books stored in the database.
 # This view should render a simple text list of book titles and their authors.
 
-def book_list(request):
+def list_books(request):
     books = Book.objects.all()
     context = {'book_list': books}
     return render(request, 'relationship_app/list_books.html', context)
 
-def libraly_list(request):
+def LibraryDetailView(request):
     libralies = Library.objects.all()
     context = {'libraly_list': libralies}
     return render(request, 'relationship_app/library_detail.html', context)
