@@ -31,14 +31,13 @@ class SignUpView(CreateView):
     success_url = reverse_lazy('login')
     template_name = 'relationship_app/register.html'
 
-class LoginView(login):
     template_name = 'relationship_app/login.html'
 
 class LogoutView(logout):
     template_name = 'relationship_app/logout.html'
 
 @admin
-def admin(request):
+def admin_view(request):
     UserProfile = UserProfile.objects.all()
     return render(request, 'relationship_app/profile.html', {'userProfile': UserProfile})
 
