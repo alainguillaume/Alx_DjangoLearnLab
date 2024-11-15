@@ -3,21 +3,14 @@ from django.shortcuts import render
 from django.views.generic.detail import DetailView
 from .models import Book
 from .models import Library
-# Create your views here.
+from django.contrib.auth. forms import UserCreationForm
+from django.urls import reverse_lazy
+from django.views.generic import CreateView
 
-# Implement Function-based View:
-
-# Create a function-based view in relationship_app/views.py that lists all books stored in the database.
-# This view should render a simple text list of book titles and their authors.
 
 def list_books(request):
     books = Book.objects.all()
     return render(request, 'relationship_app/list_books.html', {'books': books})
-
-# def LibraryDetailView(request):
-#     libralies = Library.objects.all()
-#     context = {'libraly_list': libralies}
-#     return render(request, 'relationship_app/library_detail.html', context)
 
 class LibraryDetailView(DetailView):
     model = Library
