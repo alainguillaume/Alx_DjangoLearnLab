@@ -33,6 +33,6 @@ class UserProfile(models.Model):
         (LIBRARIAN, 'Librarian'),
         (MEMBER, 'Member'),
     ]
-    # user = 
+    user = models.OneToOneField('auth.User', on_delete=models.CASCADE)
     role = models.CharField(max_length=10, choices=ROLE_CHOICES, default=MEMBER)
 

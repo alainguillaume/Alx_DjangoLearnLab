@@ -2,12 +2,14 @@ from typing import Any
 from django.shortcuts import render
 from django.views.generic.detail import DetailView
 from .models import Book
+from .models import UserProfile
 from .models import Library
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
 from django.contrib.auth import logout
 from django.urls import reverse_lazy
 from django.views.generic import CreateView
+from django.contrib.auth import admin
 
 
 
@@ -34,6 +36,11 @@ class LoginView(login):
 
 class LogoutView(logout):
     template_name = 'relationship_app/logout.html'
+
+@admin
+def UserProfile(request):
+    UserProfile = UserProfile.objects.all()
+    return render(request, 'relationship_app/userProfile.html', {'userProfile': UserProfile})
 
 
 
