@@ -38,7 +38,7 @@ class LogoutView(logout):
     template_name = 'relationship_app/logout.html'
 
 @admin
-def UserProfile(request):
+def Admin(request):
     UserProfile = UserProfile.objects.all()
     return render(request, 'relationship_app/profile.html', {'userProfile': UserProfile})
 
