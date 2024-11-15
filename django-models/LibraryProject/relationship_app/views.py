@@ -3,9 +3,9 @@ from django.shortcuts import render
 from django.views.generic.detail import DetailView
 from .models import Book
 from .models import Library
-from django.contrib.auth. forms import UserCreationForm
-from django.contrib.auth .forms import login
-from django.contrib.auth .forms import logout
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth  import login
+from django.contrib.auth import logout
 from django.urls import reverse_lazy
 from django.views.generic import CreateView
 
