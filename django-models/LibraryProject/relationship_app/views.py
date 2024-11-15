@@ -40,7 +40,7 @@ class LogoutView(logout):
 @admin
 def UserProfile(request):
     UserProfile = UserProfile.objects.all()
-    return render(request, 'relationship_app/userProfile.html', {'userProfile': UserProfile})
+    return render(request, 'relationship_app/profile.html', {'userProfile': UserProfile})
 
 
 
