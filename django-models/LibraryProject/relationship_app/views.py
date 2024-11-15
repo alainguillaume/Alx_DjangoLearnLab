@@ -29,10 +29,10 @@ class SignUpView(CreateView):
     success_url = reverse_lazy('login')
     template_name = 'relationship_app/register.html'
 
-class LogInView(login):
+class LoginView(login):
     template_name = 'relationship_app/login.html'
 
-class LogOutView(logout):
+class LogoutView(logout):
     template_name = 'relationship_app/logout.html'
 
 
