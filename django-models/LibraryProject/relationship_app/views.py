@@ -12,8 +12,7 @@ from .models import Library
 
 def list_books(request):
     books = Book.objects.all()
-    context = {'book_list': books}
-    return render(request, 'relationship_app/list_books.html', context)
+    return render(request, 'relationship_app/list_books.html', {'books': books})
 
 # def LibraryDetailView(request):
 #     libralies = Library.objects.all()
@@ -23,8 +22,10 @@ def list_books(request):
 class LibraryDetailView(DetailView):
     model = Library
     template_name = 'relationship_app/library_detail.html'
-    
+    context_object_name = Library
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         library = self.get_object()
         context['book_list'] = library.get_book_list()
+
+
