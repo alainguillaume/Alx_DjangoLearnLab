@@ -37,15 +37,32 @@ class LogoutView(logout):
     template_name = 'relationship_app/logout.html'
 
 
-def is_admin(UserProfile):
-    return UserProfile.role == 'Admin'
+# Function to check if the user is an Admin
+def is_admin(user):
+    return user.userprofile.role == 'Admin'
 
+# Function to check if the user is a Librarian
+def is_librarian(user):
+    return user.userprofile.role == 'Librarian'
 
+# Function to check if the user is a Member
+def is_member(user):
+    return user.userprofile.role == 'Member'
+
+# Admin view: only accessible by Admin users
 @user_passes_test(is_admin)
 def admin_view(request):
-    UserProfile = UserProfile.objects.all()
-    return render(request, 'relationship_app/profile.html', {'userProfile': UserProfile})
+    return render(request, 'admin_view.html')
 
+# Librarian view: only accessible by Librarian users
+@user_passes_test(is_librarian)
+def librarian_view(request):
+    return render(request, 'librarian_view.html')
+
+# Member view: only accessible by Member users
+@user_passes_test(is_member)
+def member_view(request):
+    return render(request, 'member_view.html')
 
 
 
