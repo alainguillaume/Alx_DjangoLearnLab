@@ -38,15 +38,19 @@ class LogoutView(logout):
     template_name = 'relationship_app/logout.html'
 
 
-# Function to check if the user is an Admin
+# Test function for checking if the user is an Admin
 def is_admin(user):
-    return user.userprofile.role == 'Admin'
+    try:
+        # Check if the user has an associated profile and whether the role is 'Admin'
+        return user.userprofile.role == 'Admin'
+    except UserProfile.DoesNotExist:
+        return False  # In case the user does not have a profile yet
 
-# Function to check if the user is a Librarian
+# Test function for checking if the user is a Librarian
 def is_librarian(user):
     return user.userprofile.role == 'Librarian'
 
-# Function to check if the user is a Member
+# Test function for checking if the user is a Member
 def is_member(user):
     return user.userprofile.role == 'Member'
 
@@ -64,9 +68,3 @@ def librarian_view(request):
 @user_passes_test(is_member)
 def member_view(request):
     return render(request, 'member_view.html')
-
-
-
-
-
-
