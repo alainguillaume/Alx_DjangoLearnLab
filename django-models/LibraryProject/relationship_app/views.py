@@ -55,7 +55,7 @@ def is_member(user):
     return user.userprofile.role == 'Member'
 
 # Admin view: only accessible by Admin users
-@user_passes_test(is_admin)
+@user_passes_test(is_admin, login_url='/access-denied/')
 def admin_view(request):
     return render(request, 'admin_view.html')
 
