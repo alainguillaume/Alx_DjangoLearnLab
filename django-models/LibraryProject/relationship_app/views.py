@@ -40,11 +40,7 @@ class LogoutView(logout):
 
 # Test function for checking if the user is an Admin
 def is_admin(user):
-    try:
-        # Check if the user has an associated profile and whether the role is 'Admin'
-        return user.userprofile.role == 'Admin'
-    except UserProfile.DoesNotExist:
-        return False  # In case the user does not have a profile yet
+    return user.userprofile.role == 'Admin'
 
 # Test function for checking if the user is a Librarian
 def is_librarian(user):
@@ -55,7 +51,7 @@ def is_member(user):
     return user.userprofile.role == 'Member'
 
 # Admin view: only accessible by Admin users
-@user_passes_test(is_admin, login_url='/access-denied/')
+@user_passes_test(is_admin)
 def admin_view(request):
     return render(request, 'admin_view.html')
 
